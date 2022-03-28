@@ -1,0 +1,49 @@
+// Pedro Henrique Nascimento Silva, Bruno Silveira
+// Tales Vitor, Karoline Noronha.
+
+
+#define led_vermelho 4
+#define led_azul 5
+#define B1 3
+#define B2 2
+
+long tempoAnterior=0;
+long tempo = 2000;
+
+
+void setup()
+{
+  pinMode(B1, INPUT);
+  pinMode(B2, INPUT);
+  pinMode(led_vermelho, OUTPUT);
+  pinMode(led_azul, OUTPUT);
+  
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+ 
+  // Pisca Pisca
+  
+  if (millis() >= tempoAnterior+2000)
+  {
+    
+   	tempoAnterior = millis();
+    digitalWrite(led_vermelho, !digitalRead(led_vermelho));
+    
+  }
+  
+
+  //Checa os butões
+  if (digitalRead(B1))
+  {
+    digitalWrite(led_azul,1);
+  }
+  
+  if (digitalRead(B2))
+  {
+    digitalWrite(led_azul,0);
+  }
+}
